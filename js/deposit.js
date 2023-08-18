@@ -25,6 +25,35 @@ document.getElementById("btn_deposit").addEventListener("click", function () {
     // Clear the deposit_field input
     document.getElementById("deposit_field").value = "";
   } else {
-    console.log("Invalid deposit amount. Please enter a valid number.");
+    alert("Invalid deposit amount. Please add your deposit amount.");
+  }
+});
+
+// =-=-=-=-=-=-= Withdraw functionality for this application -=-=-=-=-=-=-=
+
+document.getElementById("btn_withdraw").addEventListener("click", function () {
+  const withdrawField = document.getElementById("withdraw_field").value;
+  const withdrawTotal = parseFloat(withdrawField);
+
+  if (!isNaN(withdrawTotal)) {
+    const withdrawTotalElement = document.getElementById("withdraw_total");
+    const withdrawTotalString = withdrawTotalElement.innerText;
+    const withdrawAmountString = parseFloat(withdrawTotalString);
+
+    const depositTotalBalanceElement = document.getElementById("balance_total");
+    const depositTotalBalanceString = depositTotalBalanceElement.innerText;
+    const depositTotalBalance = parseFloat(depositTotalBalanceString);
+
+    if (depositTotalBalance > withdrawTotal) {
+      withdrawTotalElement.innerText = withdrawAmountString + withdrawTotal;
+      depositTotalBalanceElement.innerText =
+        depositTotalBalance - withdrawTotal;
+    } else {
+      alert("no enough money to withdraw");
+    }
+
+    document.getElementById("withdraw_field").value = "";
+  } else {
+    alert("Invalid withdraw amount. Please type your withdraw amount 💸.");
   }
 });
