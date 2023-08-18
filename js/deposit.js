@@ -57,3 +57,7 @@ document.getElementById("btn_withdraw").addEventListener("click", function () {
     alert("Invalid withdraw amount. Please type your withdraw amount 💸.");
   }
 });
+
+document.getElementById("backHome").addEventListener("click", function () {
+  window.location.href = "./index.html";
+});
